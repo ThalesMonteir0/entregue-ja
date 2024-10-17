@@ -19,21 +19,17 @@ type OrganizationDTOResponse struct {
 	EmailOwner   string `json:"email_owner"`
 }
 
-type createOrganizationUseCase struct {
+type CreateOrganizationUseCase struct {
 	Repository entity.OrganizationRepositoryInterface
 }
 
-type CreateOrganizationUseCaseInterface interface {
-	Execute(organizationDTO OrganizationDTO) (OrganizationDTOResponse, error)
-}
-
-func NewCreateOrganizationUseCase(repository entity.OrganizationRepositoryInterface) CreateOrganizationUseCaseInterface {
-	return &createOrganizationUseCase{
+func NewCreateOrganizationUseCase(repository entity.OrganizationRepositoryInterface) CreateOrganizationUseCase {
+	return CreateOrganizationUseCase{
 		repository,
 	}
 }
 
-func (c createOrganizationUseCase) Execute(organizationDTO OrganizationDTO) (OrganizationDTOResponse, error) {
+func (c CreateOrganizationUseCase) Execute(organizationDTO OrganizationDTO) (OrganizationDTOResponse, error) {
 	organization, err := entity.NewOrganization(
 		organizationDTO.FantasyName,
 		organizationDTO.SocialReason,
