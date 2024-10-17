@@ -11,9 +11,8 @@ type Organization struct {
 	EmailOwner   string
 }
 
-func NewOrganization(id int, fantasyName, socialReason, cnpj, contactOwner, emailOwner string) (*Organization, error) {
+func NewOrganization(fantasyName, socialReason, cnpj, contactOwner, emailOwner string) (*Organization, error) {
 	org := Organization{
-		ID:           id,
 		FantasyName:  fantasyName,
 		SocialReason: socialReason,
 		Cnpj:         cnpj,

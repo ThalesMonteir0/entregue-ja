@@ -1,5 +1,5 @@
 package entity
 
 type OrganizationRepositoryInterface interface {
-	Save()
+	Save(organizationDTO *Organization) error
 }
