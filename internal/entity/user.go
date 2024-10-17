@@ -5,18 +5,21 @@ import "errors"
 type User struct {
 	ID             int
 	OrganizationID int
+	TypeUserID     int
 	Name           string
 	Password       string
 	Role           string
+	Email          string
 }
 
-func NewUser(id, organizationID int, name string, password, role string) (*User, error) {
+func NewUser(organizationID, typeUserID int, name string, password, role, email string) (*User, error) {
 	user := User{
-		ID:             id,
 		OrganizationID: organizationID,
 		Name:           name,
 		Password:       password,
 		Role:           role,
+		TypeUserID:     typeUserID,
+		Email:          email,
 	}
 
 	if err := user.isValid(); err != nil {
@@ -43,6 +46,6 @@ func (u *User) isValid() error {
 	return nil
 }
 
-func (u *User) EncryptPassword() {
+func (u *User) EncryptPassword() error {
 
 }

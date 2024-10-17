@@ -1,5 +1,9 @@
 package entity
 
 type OrganizationRepositoryInterface interface {
-	Save(organizationDTO *Organization) error
+	Save(organization *Organization) error
+}
+
+type UserRepositoryInterface interface {
+	Save(user *User) error
 }
